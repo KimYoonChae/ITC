@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'application'  // application 플러그인 추가
+}
+
+group = 'com.kyc'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()            // Maven 중앙 저장소에서 의존성 다운로드
+}
+
+dependencies {
+    implementation 'org.apache.commons:commons-csv:1.8'  // CSV 파일 처리 라이브러리 예시
+    testImplementation 'junit:junit:4.13.2'  // JUnit 테스트 라이브러리
+}
+
+application {
+    mainClass = 'kyc.Main'    // 애플리케이션의 진입점 (Main 클래스)
+}
+
+// 리소스 파일 중복 처리 전략 설정
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE  // 중복된 파일 제외
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'  // 소스 파일 인코딩 설정
+    sourceCompatibility = '11'  // Java 11로 설정
+    targetCompatibility = '11'  // Java 11로 설정
+}
+
+test {
+    useJUnitPlatform()         // JUnit5 기반의 테스트를 사용하려면 이 설정 추가
+}
