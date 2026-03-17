@@ -16,7 +16,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'kyc.Main'    // 애플리케이션의 진입점 (Main 클래스)
+    mainClass = 'edu.handong.csee.isel.Main'   // 애플리케이션의 진입점 (Main 클래스)
 }
 
 // 리소스 파일 중복 처리 전략 설정
@@ -26,10 +26,24 @@ processResources {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'  // 소스 파일 인코딩 설정
-    sourceCompatibility = '11'  // Java 11로 설정
-    targetCompatibility = '11'  // Java 11로 설정
+    sourceCompatibility = '8'  // Java 11로 설정
+    targetCompatibility = '8'  // Java 11로 설정
 }
 
 test {
     useJUnitPlatform()         // JUnit5 기반의 테스트를 사용하려면 이 설정 추가
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'edu.handong.csee.isel.Main'
+    }
+
+    // 의존성 라이브러리도 함께 패키징 (fat jar)
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

@@ -1,4 +1,4 @@
-package kyc.model;
+package edu.handong.csee.isel.model;
 
 public class Logistic {
 
@@ -13,6 +13,18 @@ public class Logistic {
     //표준화때 필요한 평균, 표준편차
     private double[] mean;
     private double[] std;
+
+    private int epoch;
+
+    public Logistic() {
+        this.epoch = 10;
+        this.learningrate = 0.001;
+    }
+
+    public Logistic(int epoch, double lr) {
+        this.epoch = epoch;
+        this.learningrate = lr;
+    }
 
     public void initialize(double[][] data){
         training_data=data;

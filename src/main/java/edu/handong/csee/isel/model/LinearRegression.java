@@ -1,13 +1,25 @@
-package kyc.model;
+package edu.handong.csee.isel.model;
 
 public class LinearRegression {
 
     private double weight, bias;
     private double learningrate; //러닝 레이트
-    private int[][] training_data;
+    private double[][] training_data;
     private int training_data_count; //데이터 개수
 
-    public void training(int[][] data) {
+    private int epoch;
+
+    public LinearRegression() {
+        this.epoch = 10;
+        this.learningrate = 0.001;
+    }
+
+    public LinearRegression(int epoch, double lr) {
+        this.epoch = epoch;
+        this.learningrate = lr;
+    }
+
+    public void training(double[][] data) {
         training_data=data;
         learningrate=0.001;
         training_data_count=training_data.length; //데이터 개수
