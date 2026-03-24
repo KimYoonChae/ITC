@@ -23,7 +23,7 @@ public class Main {
         // args배열을 순서대로 보면서 옵션 네임, 값 파싱하기
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) { // 옵션 네임 확인하고
-                case "--edu.handong.csee.isel.model":
+                case "--model":
                     model = args[++i]; //전위 연산자로 바로 다음에 들어있는 값 가져오기
                     break;
                 case "--epoch":
