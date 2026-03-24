@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation 'org.apache.commons:commons-csv:1.8'  // CSV 파일 처리 라이브러리 예시
+    implementation 'commons-cli:commons-cli:1.5.0'
     testImplementation 'junit:junit:4.13.2'  // JUnit 테스트 라이브러리
 }
 
